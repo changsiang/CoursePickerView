@@ -14,7 +14,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        courses = ["OOAD", "JAVA", "PMIS"];
+        courses = ["OOAD", "JAVA", "PMIS", "JAVA EE"];
 
         let pickerView : UIPickerView = UIPickerView();
         pickerView.delegate = self;
@@ -24,17 +24,21 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBOutlet weak var textFieldCourse: UITextField!
     var courses: Array<String>?;
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1;
+    }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return course!.count;
+        return courses!.count;
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
-        return course![row];
+        return courses![row];
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component:Int){
-        textFieldCourse.text = course![row];
+        textFieldCourse.text = courses![row];
     }
 
     override func didReceiveMemoryWarning() {
